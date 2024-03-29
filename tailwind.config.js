@@ -4,7 +4,11 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],  theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        headerFont: ["Kumbh Sans", "sans-serif"]
+      }
+    },
   },
   plugins: [],
 }

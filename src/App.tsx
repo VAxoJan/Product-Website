@@ -1,6 +1,8 @@
+import MainWork from "./components/main/MainWork"
+
 const App = () => {
   return (
-    <h1>products</h1>
+    <MainWork/>
   )
 }
 
