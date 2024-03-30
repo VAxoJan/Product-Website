@@ -9,7 +9,7 @@ const Header = () => {
     <>
     <div className="flex justify-between">
       <div className='flex'>
-      <img className='flex lg:hidden mx-4 items-center' src={mobileButton} alt="" />
+      <img className='flex xl:hidden mx-4 items-center' src={mobileButton} alt="" />
       <img src={logo}/>
       <div className='lg:flex hidden lg:object-none mx-20 gap-[32px] py-6 font-headerFont text-[#69707D] text-md items-center'>
       <p className='hover:border-b border-[#ff7e1b] cursor-pointer'>Collections</p>
