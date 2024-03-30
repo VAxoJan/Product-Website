@@ -8,7 +8,7 @@ interface HeaderProps {
   onAddToCart: () => void;
 }
 
-const Header: React.FC<any> = ({ onAddToCart, counter }) => {
+const Header: React.FC<any> = ({ , counter }) => {
   return (
     <>
       <div className="flex justify-between xl:px-32">

@@ -15,6 +15,7 @@ const MainWork: React.FC = () => {
     setCounter(0)
     console.log("item added to cart");
   };
+  
 
   return (
     <div className="w-full">
