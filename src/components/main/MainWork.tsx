@@ -3,9 +3,12 @@ import Header from "../Header/Header";
 import shoes from "../images/shoes.svg";
 import basket from "../images/Shape (1).svg";
 import { shoe1, shoe2, shoe3, shoe4 } from "..";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const MainWork: React.FC = () => {
   const [counter, setCounter] = useState<number>(0);
+  const notify = () => toast.error("Item could not be added to cart");
 
   const handleAddToCart = () => {
     setCounter(counter + 1);
@@ -78,6 +81,9 @@ const MainWork: React.FC = () => {
             <div
               onClick={() => {
                 console.log("item added to cart");
+                if (counter === 0) {
+                  notify()
+                }
               }}
               className="flex w-full md:w-auto h-10 md:h-14 bg-[#FF7E1B] justify-center items-center gap-1 md:gap-2 rounded-lg  xl:w-[172px]"
             >
@@ -93,6 +99,20 @@ const MainWork: React.FC = () => {
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      <ToastContainer />
+
     </div>
   );
 };
