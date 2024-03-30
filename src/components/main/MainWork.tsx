@@ -1,24 +1,34 @@
+import React, { useState } from "react";
 import Header from "../Header/Header";
 import shoes from "../images/shoes.svg";
 import basket from "../images/Shape (1).svg";
-import shoe1 from "../images/1.svg";
-import shoe2 from "../images/2.svg";
-import shoe3 from "../images/3.svg";
-import shoe4 from "../images/4.svg";
+import { shoe1, shoe2, shoe3, shoe4 } from "..";
 
-const MainWork = () => {
+const MainWork: React.FC = () => {
+  const [counter, setCounter] = useState<number>(0);
+
+  const handleAddToCart = () => {
+    setCounter(counter + 1);
+    setCounter(0)
+    console.log("item added to cart");
+  };
+
   return (
     <div className="w-full">
-      <Header />
+      <Header onAddToCart={handleAddToCart} counter={counter} />
       <hr />
       <div className="grid md:flex md:gap-10 w-full mt-24 px-4 md:px-0">
         <div className="md:w-1/2 xl:grid xl:justify-center">
-          <img src={shoes} className="w-full xl:w-[445px]  2xl:h-400px mt-[-70px] xl:mt-0" />
+          <img
+            src={shoes}
+            className="w-full xl:w-[445px]  2xl:h-400px mt-[-70px] xl:mt-0"
+            alt="Shoes"
+          />
           <div className="md:flex gap-6 my-4 hidden">
-            <img className="cursor-pointer" src={shoe1} />
-            <img className="cursor-pointer" src={shoe2} />
-            <img className="cursor-pointer" src={shoe3} />
-            <img className="cursor-pointer" src={shoe4} />
+            <img className="cursor-pointer" src={shoe1} alt="Shoe 1" />
+            <img className="cursor-pointer" src={shoe2} alt="Shoe 2" />
+            <img className="cursor-pointer" src={shoe3} alt="Shoe 3" />
+            <img className="cursor-pointer" src={shoe4} alt="Shoe 4" />
           </div>
         </div>
         <div className="md:w-1/2 py-12">
@@ -44,12 +54,38 @@ const MainWork = () => {
           </div>
           <div className="flex gap-2 md:gap-4 rounded-lg">
             <div className="flex justify-between items-center px-3 md:px-5 w-20 md:w-32 h-10 md:h-14 bg-[#F6F8FD]">
-              <h1 className="text-lg md:text-2xl">-</h1>
-              <h1 className="text-lg md:text-2xl">12</h1>
-              <h1 className="text-lg md:text-2xl">+</h1>
+              <h1
+                onClick={() => {
+                  if (counter === 0) {
+                    return;
+                  }
+                  setCounter(counter - 1);
+                }}
+                className="text-lg md:text-2xl cursor-pointer"
+              >
+                -
+              </h1>
+              <h1 className="text-lg md:text-2xl">{counter}</h1>
+              <h1
+                onClick={() => {
+                  setCounter(counter + 1);
+                }}
+                className="text-lg md:text-2xl cursor-pointer"
+              >
+                +
+              </h1>
             </div>
-            <div className="flex w-full md:w-auto h-10 md:h-14 bg-[#FF7E1B] justify-center items-center gap-1 md:gap-2 rounded-lg  xl:w-[172px]">
-              <img className="w-4 h-4 md:w-6 md:h-6" src={basket} />
+            <div
+              onClick={() => {
+                console.log("item added to cart");
+              }}
+              className="flex w-full md:w-auto h-10 md:h-14 bg-[#FF7E1B] justify-center items-center gap-1 md:gap-2 rounded-lg  xl:w-[172px]"
+            >
+              <img
+                className="w-4 h-4 md:w-6 md:h-6"
+                src={basket}
+                alt="Basket"
+              />
               <button className="text-[#ffffff] font-bold font-headerFont">
                 Add to cart
               </button>
