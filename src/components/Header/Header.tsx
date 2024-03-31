@@ -1,14 +1,17 @@
-import React from "react";
-import basketLogo from '../images/basket.svg'
-import profileLogo from '../images/profile.jpg'
-import mobileButton from '../images/mobileButton.svg'
-import logo from '../images/sneakers.svg'
+import React, { useState } from "react";
+import basketLogo from '../images/basket.svg';
+import profileLogo from '../images/profile.jpg';
+import mobileButton from '../images/mobileButton.svg';
+import logo from '../images/sneakers.svg';
+import CardPopup from "../CardPopup/CardPopup";
 
-interface HeaderProps {
-  onAddToCart: () => void;
-}
+const Header: React.FC<any> = ({ counter }) => {
+  const [popup, setPopup] = useState(false);
 
-const Header: React.FC<any> = ({ , counter }) => {
+  const handlePopup = () => {
+    setPopup(!popup);
+  };
+
   return (
     <>
       <div className="flex justify-between xl:px-32">
@@ -25,6 +28,7 @@ const Header: React.FC<any> = ({ , counter }) => {
         </div>
         <div className='flex relative gap-5 lg:gap-11 items-center py-5'>
           <img
+            onClick={handlePopup}
             className='cursor-pointer'
             src={basketLogo}
             alt="Basket"
@@ -33,6 +37,7 @@ const Header: React.FC<any> = ({ , counter }) => {
             <h1 className="text-white font-bold">{counter}</h1>
           </div>
           <img className='w-6 h-6 lg:w-12 lg:h-12 rounded-full' src={profileLogo} />
+          {popup && <CardPopup />}
         </div>
       </div>
     </>

@@ -13,9 +13,11 @@ const MainWork: React.FC = () => {
   const handleAddToCart = () => {
     setCounter(counter + 1);
     setCounter(0)
+    if(counter === 0) {
+      return ;
+    }
     console.log("item added to cart");
   };
-  
 
   return (
     <div className="w-full">
@@ -81,7 +83,6 @@ const MainWork: React.FC = () => {
             </div>
             <div
               onClick={() => {
-                console.log("item added to cart");
                 if (counter === 0) {
                   notify()
                 }
