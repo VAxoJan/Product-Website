@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import Header from "../Header/Header";
-import shoes from "../images/shoes.svg";
-import basket from "../images/Shape (1).svg";
-import { shoe1, shoe2, shoe3, shoe4 } from "..";
+import { basket, shoe1, shoe2, shoe3, shoe4, shoes } from "..";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -12,11 +10,16 @@ const MainWork: React.FC = () => {
 
   const handleAddToCart = () => {
     setCounter(counter + 1);
-    setCounter(0)
-    if(counter === 0) {
-      return ;
-    }
-    console.log("item added to cart");
+
+    const existingCartItems = JSON.parse(localStorage.getItem("cart") || "[]");
+
+    const newItem = {
+      id: existingCartItems.length + 1,
+      quantity: counter + 1,
+    };
+    const updatedCartItems = [...existingCartItems, newItem];
+    localStorage.setItem("cartInfo", JSON.stringify(updatedCartItems));
+    console.log(`${counter} Fall Limited Edition Sneakers added to cart`);
   };
 
   return (
@@ -84,7 +87,9 @@ const MainWork: React.FC = () => {
             <div
               onClick={() => {
                 if (counter === 0) {
-                  notify()
+                  notify();
+                } else {
+                  handleAddToCart();
                 }
               }}
               className="flex w-full md:w-auto h-10 md:h-14 bg-[#FF7E1B] justify-center items-center gap-1 md:gap-2 rounded-lg  xl:w-[172px]"
@@ -114,7 +119,6 @@ const MainWork: React.FC = () => {
         theme="light"
       />
       <ToastContainer />
-
     </div>
   );
 };
