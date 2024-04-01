@@ -9,17 +9,19 @@ const MainWork: React.FC = () => {
   const notify = () => toast.error("Item could not be added to cart");
 
   const handleAddToCart = () => {
-    setCounter(counter + 1);
-
-    const existingCartItems = JSON.parse(localStorage.getItem("cart") || "[]");
-
+    if (counter === 0) {
+      notify();
+      return;
+    }
+    
+    const existingCartItems: any[] = JSON.parse(localStorage.getItem("cart") || "[]");
     const newItem = {
       id: existingCartItems.length + 1,
-      quantity: counter + 1,
+      quantity: counter,
     };
-    const updatedCartItems = [...existingCartItems, newItem];
-    localStorage.setItem("cartInfo", JSON.stringify(updatedCartItems));
-    console.log(`${counter} Fall Limited Edition Sneakers added to cart`);
+    const updatedCartItems = [...existingCartItems, [newItem]];
+    localStorage.setItem("cart", JSON.stringify(updatedCartItems));
+    setCounter(0);
   };
 
   return (
