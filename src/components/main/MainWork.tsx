@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../Header/Header";
 import { basket, shoe1, shoe2, shoe3, shoe4, shoes } from "..";
 import { ToastContainer, toast } from 'react-toastify';
@@ -6,8 +6,16 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const MainWork: React.FC = () => {
   const [counter, setCounter] = useState<number>(0);
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const notify = () => toast.error("Item could not be added to cart");
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    },2500);
+
+    return () => clearTimeout(timeout);
+  }, []);
 
   const handleAddToCart = () => {
     if (counter === 0) {
@@ -31,21 +39,26 @@ const MainWork: React.FC = () => {
       <hr />
       <div className="grid md:flex md:gap-10 w-full mt-24 px-4 md:px-0">
 
-        {!isLoading ? (<div className="md:w-1/2 xl:grid xl:justify-center">
-          <img
-            src={shoes}
-            className="w-full xl:w-[445px]  2xl:h-400px mt-[-70px] xl:mt-0"
-            alt="Shoes"
-          />
-          <div className="md:flex gap-6 my-4 hidden">
-            <img className="cursor-pointer" src={shoe1} alt="Shoe 1" />
-            <img className="cursor-pointer" src={shoe2} alt="Shoe 2" />
-            <img className="cursor-pointer" src={shoe3} alt="Shoe 3" />
-            <img className="cursor-pointer" src={shoe4} alt="Shoe 4" />
+        {isLoading ? (
+          <div className="flex w-[932px] justify-center">
+            <img className="w-[245px h-[445px]" src="https://media2.giphy.com/media/8DTVLWOGZuT8k/giphy.gif?cid=6c09b952v5zwejf1i1d17d03anipxfw3ulr5h8baakpwpqed&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g" alt="Loading..." />
           </div>
-        </div>) : (
-          <img src="https://www.icegif.com/wp-content/uploads/2023/07/icegif-1263.gif" alt="" />
+        ) : (
+          <div className="md:w-1/2 xl:grid xl:justify-center">
+            <img
+              src={shoes}
+              className="w-full xl:w-[445px]  2xl:h-400px mt-[-70px] xl:mt-0"
+              alt="Shoes"
+            />
+            <div className="md:flex gap-6 my-4 hidden">
+              <img className="cursor-pointer" src={shoe1} alt="Shoe 1" />
+              <img className="cursor-pointer" src={shoe2} alt="Shoe 2" />
+              <img className="cursor-pointer" src={shoe3} alt="Shoe 3" />
+              <img className="cursor-pointer" src={shoe4} alt="Shoe 4" />
+            </div>
+          </div>
         )}
+
         <div className="md:w-1/2 py-12">
           <p className="text-[#ff7e1b] font-headerFont font-bold text-sm">
             Sneaker Company
