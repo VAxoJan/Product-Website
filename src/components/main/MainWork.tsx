@@ -12,7 +12,7 @@ const MainWork: React.FC = () => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setIsLoading(false);
-    },2500);
+    }, 2500);
 
     return () => clearTimeout(timeout);
   }, []);

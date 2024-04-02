@@ -7,7 +7,7 @@ import CardPopup from "../CardPopup/CardPopup";
 
 const Header: React.FC<any> = ({ counter }) => {
   const [popup, setPopup] = useState(false);
-  const [myItem,setMyItem] = useState<any>(null)
+  // const [myItem,setMyItem] = useState<any>(null)
 
   const handlePopup = () => {
     setPopup(!popup);
