@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import basketLogo from '../images/basket.svg';
 import profileLogo from '../images/profile.jpg';
 import mobileButton from '../images/mobileButton.svg';
@@ -7,10 +7,21 @@ import CardPopup from "../CardPopup/CardPopup";
 
 const Header: React.FC<any> = ({ counter }) => {
   const [popup, setPopup] = useState(false);
+  const [myItem,setMyItem] = useState<any>(null)
 
   const handlePopup = () => {
     setPopup(!popup);
   };
+
+
+  useEffect(() => {
+    const dataLocal = () => {
+      const data = localStorage.getItem("cart")
+      const parsedData = JSON.parse(data! || "[]")
+      console.log(parsedData);
+    }
+    dataLocal()
+  },[])
 
   return (
     <>
