@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const MainWork: React.FC = () => {
   const [counter, setCounter] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const notify = () => toast.error("Item could not be added to cart");
 
   const handleAddToCart = () => {
@@ -13,7 +14,7 @@ const MainWork: React.FC = () => {
       notify();
       return;
     }
-    
+
     const existingCartItems: any[] = JSON.parse(localStorage.getItem("cart") || "[]");
     const newItem = {
       id: existingCartItems.length + 1,
@@ -29,7 +30,8 @@ const MainWork: React.FC = () => {
       <Header onAddToCart={handleAddToCart} counter={counter} />
       <hr />
       <div className="grid md:flex md:gap-10 w-full mt-24 px-4 md:px-0">
-        <div className="md:w-1/2 xl:grid xl:justify-center">
+
+        {!isLoading ? (<div className="md:w-1/2 xl:grid xl:justify-center">
           <img
             src={shoes}
             className="w-full xl:w-[445px]  2xl:h-400px mt-[-70px] xl:mt-0"
@@ -41,7 +43,9 @@ const MainWork: React.FC = () => {
             <img className="cursor-pointer" src={shoe3} alt="Shoe 3" />
             <img className="cursor-pointer" src={shoe4} alt="Shoe 4" />
           </div>
-        </div>
+        </div>) : (
+          <img src="https://www.icegif.com/wp-content/uploads/2023/07/icegif-1263.gif" alt="" />
+        )}
         <div className="md:w-1/2 py-12">
           <p className="text-[#ff7e1b] font-headerFont font-bold text-sm">
             Sneaker Company
