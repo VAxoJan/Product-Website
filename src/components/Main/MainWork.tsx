@@ -49,7 +49,7 @@ const MainWork: React.FC = () => {
           <h1 className="text-2xl md:text-4xl leading-10 md:leading-12 my-4 md:my-7">
             Fall Limited Edition <br /> Sneakers
           </h1>
-          <p className="text-base text-[#69707d] leading-7 md:leading-8">
+          <p className="text-base text-[#69707d] leading-7 md:leading-8 xl:w-[362px]">
             These low-profile sneakers are your perfect casual wear companion.
             Featuring a durable rubber outer sole, they’ll withstand everything
             the weather can offer.

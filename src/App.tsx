@@ -1,4 +1,4 @@
-import MainWork from "./components/main/MainWork"
+import MainWork from "./components/Main/MainWork"
 
 const App = () => {
   return (
