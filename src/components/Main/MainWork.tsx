@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Header from "../Header/Header";
-import { basket, shoe1, shoe2, shoe3, shoe4, shoes } from "..";
+import { basket} from "..";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ShoesSlide from "../Shoes-slide/ShoesSlide";
 
 const MainWork: React.FC = () => {
   const [counter, setCounter] = useState<number>(0);
@@ -29,19 +30,20 @@ const MainWork: React.FC = () => {
       <Header onAddToCart={handleAddToCart} counter={counter} />
       <hr />
       <div className="grid md:flex md:gap-10 w-full mt-24 px-4 md:px-0">
-          <div className="md:w-1/2 xl:grid xl:justify-center">
-            <img
-              src={shoes}
-              className="w-full xl:w-[445px]  2xl:h-400px mt-[-70px] xl:mt-0"
-              alt="Shoes"
-            />
-            <div className="md:flex gap-6 my-4 hidden">
-              <img className="cursor-pointer" src={shoe1} alt="Shoe 1" />
-              <img className="cursor-pointer" src={shoe2} alt="Shoe 2" />
-              <img className="cursor-pointer" src={shoe3} alt="Shoe 3" />
-              <img className="cursor-pointer" src={shoe4} alt="Shoe 4" />
-            </div>
-          </div>
+          <ShoesSlide/>
+          {/* <div className="md:w-1/2 xl:grid xl:justify-center">
+                <img
+                    src={shoes}
+                    className="w-full xl:w-[445px]  2xl:h-400px mt-[-70px] xl:mt-0"
+                    alt="Shoes"
+                />
+                <div className="md:flex gap-6 my-4 hidden">
+                    <img className="w-[88px] cursor-pointer rounded-xl" src={shoe1} alt="Shoe 1" />
+                    <img className="cursor-pointer" src={shoe2} alt="Shoe 2" />
+                    <img className="cursor-pointer" src={shoe3} alt="Shoe 3" />
+                    <img className="cursor-pointer" src={shoe4} alt="Shoe 4" />
+                </div>
+            </div> */}
         <div className="md:w-1/2 py-12">
           <p className="text-[#ff7e1b] font-headerFont font-bold text-sm">
             Sneaker Company

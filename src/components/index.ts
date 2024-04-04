@@ -1,4 +1,4 @@
-export {default as shoe1} from "./images/1.svg"
+export {default as shoe1} from "./images/shoes.svg"
 export {default as shoe2} from "./images/2.svg"
 export {default as shoe3} from "./images/3.svg"
 export {default as shoe4} from "./images/4.svg"
