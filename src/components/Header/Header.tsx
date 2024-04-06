@@ -3,7 +3,7 @@ import basketLogo from '../images/basket.svg';
 import profileLogo from '../images/profile.jpg';
 import mobileButton from '../images/mobileButton.svg';
 import logo from '../images/sneakers.svg';
-import CardPopup from '../CardPopup/CardPopup';
+// import CardPopup from '../CardPopup/CardPopup';
 import MobilePopup from '../MobileLeftPopup/MobilePopup';
 
 const Header: React.FC<any> = ({ counter }) => {
@@ -44,7 +44,7 @@ const Header: React.FC<any> = ({ counter }) => {
             <h1 className="text-white font-bold">{counter}</h1>
           </div>
           <img className="w-6 h-6 lg:w-12 lg:h-12 rounded-full" src={profileLogo} />
-          {popup && <CardPopup/>}
+          {/* {popup && <CardPopup/>} */}
         </div>
       </div>
     </>
