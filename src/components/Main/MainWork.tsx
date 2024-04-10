@@ -24,7 +24,6 @@ const MainWork: React.FC = () => {
     };
     const updatedCartItems = [...existingCartItems, [newItem]];
     localStorage.setItem("cart", JSON.stringify(updatedCartItems));
-    setCounter(0);
   };
 
   return (
