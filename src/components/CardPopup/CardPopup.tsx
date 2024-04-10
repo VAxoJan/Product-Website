@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../images/shoes.svg";
 import trash from "../images/trash.svg";
 
@@ -7,11 +7,12 @@ interface CardPopupProps {
 }
 
 const CardPopup: React.FC<CardPopupProps> = ({ counter }) => {
-  const pricePerItem = 125.00;
-  const totalPrice = pricePerItem * counter;
+  const [isDeleted, setIsDeleted] = useState<boolean>(false);
+  const pricePerItem = 125.0;
+  const totalPrice = isDeleted ? 0 : pricePerItem * counter;
 
   return (
-    <div className="hidden rounded-xl xl:block md:flex md:absolute xl:absolute bg-white top-[80px] xl:right-[-80px] md:right-0 shadow-2xl xl:h-[250px] h-0 w-[300px] font-headerFont">
+    <div className="hidden rounded-xl xl:block md:hidden md:absolute xl:absolute bg-white top-[80px] xl:right-[-80px] md:right-0 shadow-2xl xl:h-[250px] h-0 w-[300px] font-headerFont">
       <h1 className="text-[#1D2026] font-bold py-7 px-[24px]">Cart</h1>
       <hr />
       <div className="flex px-4 gap-4 mt-5">
@@ -19,12 +20,16 @@ const CardPopup: React.FC<CardPopupProps> = ({ counter }) => {
         <div className="block">
           <p className="text-sm">Fall Limited Edition Sneakers</p>
           <img
-            className="absolute right-[13px] bottom-[129px]"
+            onClick={() => setIsDeleted(true)}
+            className="absolute right-[13px] bottom-[129px] cursor-pointer"
             src={trash}
             alt="Trash icon"
           />
           <div className="flex gap-1">
-            <p>${pricePerItem.toFixed(2)} x {counter} = ${(totalPrice).toFixed(2)}</p>
+            <p>
+              ${pricePerItem.toFixed(2)} x {!isDeleted ? counter : 0} = $
+              {totalPrice.toFixed(2)}
+            </p>
             <p className="text-black font-bold"></p>
           </div>
         </div>
