@@ -19,24 +19,21 @@ const CardPopup: React.FC<CardPopupProps> = ({ counter }) => {
         <img className="w-12 h-12 rounded-md" src={logo} alt="Shoe logo" />
         <div className="block">
           <p className="text-sm">Fall Limited Edition Sneakers</p>
-          <img
-            onClick={() => setIsDeleted(true)}
-            className="absolute right-[13px] bottom-[129px] cursor-pointer"
-            src={trash}
-            alt="Trash icon"
-          />
           <div className="flex gap-1">
             <p>
               ${pricePerItem.toFixed(2)} x {!isDeleted ? counter : 0} = $
               {totalPrice.toFixed(2)}
             </p>
-            <p className="text-black font-bold"></p>
           </div>
         </div>
       </div>
-      <button className="flex font-bold px-[100px] h-14 items-center text-white rounded-xl mt-6 mx-4  bg-[#FF7E1B]">
-        Checkout
-      </button>
+      <div
+        onClick={() => setIsDeleted(true)}
+        className="flex justify-center cursor-pointer gap-5 font-bold  h-14 items-center text-white rounded-xl mt-6 mx-4  bg-[#FF7E1B]"
+      >
+        <p>Remove Item</p>
+        <img className="cursor-pointer" src={trash} alt="Trash icon" />
+      </div>
     </div>
   );
 };
